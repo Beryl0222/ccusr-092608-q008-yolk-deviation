@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "咸蛋黄风味偏差追因簿领域事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "LOT_ACCEPTED",
+        "BATCH_TRANSFORMED",
+        "OBSERVATION_RECORDED",
+        "STOCK_HELD",
+        "DISPOSITION_APPROVED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "raw_yolk_lot",
+        "process_batch",
+        "quality_observation",
+        "disposition_case"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "BATCH_TRANSFORMED": [
+      "input_allocations",
+      "output_quantity"
+    ],
+    "OBSERVATION_RECORDED": [
+      "method_version",
+      "result"
+    ],
+    "STOCK_HELD": [
+      "scope",
+      "reason"
+    ]
+  },
+  "additionalProperties": false
+}

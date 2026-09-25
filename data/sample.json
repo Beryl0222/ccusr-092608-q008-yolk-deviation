@@ -1,0 +1,9 @@
+{
+  "event_id": "092601-008-sample-001",
+  "event_type": "LOT_ACCEPTED",
+  "aggregate_type": "raw_yolk_lot",
+  "aggregate_id": "yolk_deviation-001",
+  "occurred_at": "2026-09-25T10:00:00+08:00",
+  "version": 1,
+  "payload": {}
+}

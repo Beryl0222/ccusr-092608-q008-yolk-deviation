@@ -1,0 +1,5 @@
+[project]
+name = "yolk-deviation"
+version = "0.1.0"
+description = "咸蛋黄风味偏差追因簿领域契约"
+requires-python = ">=3.11"
