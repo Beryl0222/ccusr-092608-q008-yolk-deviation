@@ -2,8 +2,18 @@
   "event_id": "092601-008-sample-001",
   "event_type": "LOT_ACCEPTED",
   "aggregate_type": "raw_yolk_lot",
-  "aggregate_id": "yolk_deviation-001",
-  "occurred_at": "2026-09-25T10:00:00+08:00",
+  "aggregate_id": "raw-20260920-01",
+  "occurred_at": "2026-09-20T10:00:00+08:00",
   "version": 1,
-  "payload": {}
+  "payload": {
+    "supplier": "洪湖咸蛋合作社",
+    "grade": "A",
+    "quantity": {
+      "value": 500.0,
+      "unit": "kg"
+    },
+    "certificates": [
+      "QC-20260920-11"
+    ]
+  }
 }

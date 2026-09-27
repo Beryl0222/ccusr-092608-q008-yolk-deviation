@@ -1,0 +1,1154 @@
+[
+  {
+    "event_id": "lot-raw-A",
+    "event_type": "LOT_ACCEPTED",
+    "aggregate_type": "raw_yolk_lot",
+    "aggregate_id": "raw-A",
+    "occurred_at": "2026-09-20T09:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "supplier": "洪湖咸蛋合作社",
+      "grade": "A",
+      "quantity": {
+        "value": 500.0,
+        "unit": "kg"
+      },
+      "certificates": [
+        "CERT-HH-260920-A"
+      ]
+    }
+  },
+  {
+    "event_id": "lot-raw-C",
+    "event_type": "LOT_ACCEPTED",
+    "aggregate_type": "raw_yolk_lot",
+    "aggregate_id": "raw-C",
+    "occurred_at": "2026-09-20T09:20:00+08:00",
+    "version": 1,
+    "payload": {
+      "supplier": "洪湖咸蛋合作社",
+      "grade": "A",
+      "quantity": {
+        "value": 300.0,
+        "unit": "kg"
+      },
+      "certificates": [
+        "CERT-HH-260920-C"
+      ]
+    }
+  },
+  {
+    "event_id": "lot-raw-B",
+    "event_type": "LOT_ACCEPTED",
+    "aggregate_type": "raw_yolk_lot",
+    "aggregate_id": "raw-B",
+    "occurred_at": "2026-09-20T10:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "supplier": "仙桃散养收蛋点",
+      "grade": "B",
+      "quantity": {
+        "value": 300.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "th-salt-v1",
+    "event_type": "THRESHOLD_PUBLISHED",
+    "aggregate_type": "threshold",
+    "aggregate_id": "threshold-salt_pct",
+    "occurred_at": "2026-09-01T00:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "metric": "salt_pct",
+      "limits": {
+        "min": 2.0,
+        "max": 6.0
+      },
+      "effective_from": "2026-09-01T00:00:00+08:00",
+      "method_version": "SALT-TITR-v2"
+    }
+  },
+  {
+    "event_id": "th-water-v1",
+    "event_type": "THRESHOLD_PUBLISHED",
+    "aggregate_type": "threshold",
+    "aggregate_id": "threshold-water_pct",
+    "occurred_at": "2026-09-01T00:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "metric": "water_pct",
+      "limits": {
+        "min": 20.0,
+        "max": 40.0
+      },
+      "effective_from": "2026-09-01T00:00:00+08:00",
+      "method_version": "MOISTURE-OVEN-v3"
+    }
+  },
+  {
+    "event_id": "th-fishy-v1",
+    "event_type": "THRESHOLD_PUBLISHED",
+    "aggregate_type": "threshold",
+    "aggregate_id": "threshold-sensory_fishy",
+    "occurred_at": "2026-09-01T00:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "metric": "sensory_fishy",
+      "limits": {
+        "max": 1
+      },
+      "effective_from": "2026-09-01T00:00:00+08:00",
+      "method_version": "SENSORY-PANEL-v4"
+    }
+  },
+  {
+    "event_id": "th-texture-v1",
+    "event_type": "THRESHOLD_PUBLISHED",
+    "aggregate_type": "threshold",
+    "aggregate_id": "threshold-sensory_texture",
+    "occurred_at": "2026-09-01T00:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "metric": "sensory_texture",
+      "limits": {
+        "max": 2
+      },
+      "effective_from": "2026-09-01T00:00:00+08:00",
+      "method_version": "SENSORY-PANEL-v4"
+    }
+  },
+  {
+    "event_id": "step-grade-A",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "graded-A",
+    "occurred_at": "2026-09-21T08:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "grading",
+      "step_id": "grade-A",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "raw-A",
+          "quantity": 200.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "graded-A",
+          "quantity": 198.0,
+          "role": "product"
+        },
+        {
+          "quantity": 2.0,
+          "role": "sample"
+        }
+      ],
+      "params": {
+        "grader": "孙丽"
+      }
+    }
+  },
+  {
+    "event_id": "step-grade-C",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "graded-C",
+    "occurred_at": "2026-09-21T08:30:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "grading",
+      "step_id": "grade-C",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "raw-C",
+          "quantity": 200.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "graded-C",
+          "quantity": 198.0,
+          "role": "product"
+        },
+        {
+          "quantity": 2.0,
+          "role": "sample"
+        }
+      ],
+      "params": {
+        "grader": "孙丽"
+      }
+    }
+  },
+  {
+    "event_id": "step-grade-B",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "graded-B",
+    "occurred_at": "2026-09-21T09:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "grading",
+      "step_id": "grade-B",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "raw-B",
+          "quantity": 200.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "graded-B",
+          "quantity": 197.0,
+          "role": "product"
+        },
+        {
+          "quantity": 3.0,
+          "role": "sample"
+        }
+      ],
+      "params": {
+        "grader": "孙丽"
+      }
+    }
+  },
+  {
+    "event_id": "step-brine-A",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "brined-A",
+    "occurred_at": "2026-09-21T12:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "brining",
+      "step_id": "brine-A",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "graded-A",
+          "quantity": 198.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "brined-A",
+          "quantity": 189.0,
+          "role": "product"
+        },
+        {
+          "quantity": 2.0,
+          "role": "sample"
+        },
+        {
+          "quantity": 7.0,
+          "role": "loss"
+        }
+      ],
+      "params": {
+        "hours": 72,
+        "brine_concentration_pct": 22.0
+      }
+    }
+  },
+  {
+    "event_id": "step-brine-C",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "brined-C",
+    "occurred_at": "2026-09-21T12:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "brining",
+      "step_id": "brine-C",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "graded-C",
+          "quantity": 198.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "brined-C",
+          "quantity": 189.0,
+          "role": "product"
+        },
+        {
+          "quantity": 2.0,
+          "role": "sample"
+        },
+        {
+          "quantity": 7.0,
+          "role": "loss"
+        }
+      ],
+      "params": {
+        "hours": 72,
+        "brine_concentration_pct": 22.0
+      }
+    }
+  },
+  {
+    "event_id": "step-brine-B",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "brined-B",
+    "occurred_at": "2026-09-21T13:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "brining",
+      "step_id": "brine-B",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "graded-B",
+          "quantity": 197.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "brined-B",
+          "quantity": 188.0,
+          "role": "product"
+        },
+        {
+          "quantity": 3.0,
+          "role": "sample"
+        },
+        {
+          "quantity": 6.0,
+          "role": "loss"
+        }
+      ],
+      "params": {
+        "hours": 96,
+        "brine_concentration_pct": 26.0
+      }
+    }
+  },
+  {
+    "event_id": "step-thaw-A",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "thawed-A",
+    "occurred_at": "2026-09-23T06:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "thawing",
+      "step_id": "thaw-A",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "brined-A",
+          "quantity": 189.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "thawed-A",
+          "quantity": 185.0,
+          "role": "product"
+        },
+        {
+          "quantity": 2.0,
+          "role": "sample"
+        },
+        {
+          "quantity": 2.0,
+          "role": "loss"
+        }
+      ],
+      "params": {
+        "wait_hours": 18
+      }
+    }
+  },
+  {
+    "event_id": "step-thaw-C",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "thawed-C",
+    "occurred_at": "2026-09-23T06:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "thawing",
+      "step_id": "thaw-C",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "brined-C",
+          "quantity": 189.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "thawed-C",
+          "quantity": 185.0,
+          "role": "product"
+        },
+        {
+          "quantity": 2.0,
+          "role": "sample"
+        },
+        {
+          "quantity": 2.0,
+          "role": "loss"
+        }
+      ],
+      "params": {
+        "wait_hours": 18
+      }
+    }
+  },
+  {
+    "event_id": "step-thaw-B",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "thawed-B",
+    "occurred_at": "2026-09-23T06:20:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "thawing",
+      "step_id": "thaw-B",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "brined-B",
+          "quantity": 188.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "thawed-B",
+          "quantity": 185.0,
+          "role": "product"
+        },
+        {
+          "quantity": 3.0,
+          "role": "sample"
+        }
+      ],
+      "params": {
+        "wait_hours": 31
+      }
+    }
+  },
+  {
+    "event_id": "obs-raw-A-fishy",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-raw-A-fishy",
+    "occurred_at": "2026-09-20T11:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "raw_yolk_lot",
+        "aggregate_id": "raw-A"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_fishy",
+      "result": 0
+    }
+  },
+  {
+    "event_id": "obs-raw-C-fishy",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-raw-C-fishy",
+    "occurred_at": "2026-09-20T11:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "raw_yolk_lot",
+        "aggregate_id": "raw-C"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_fishy",
+      "result": 0
+    }
+  },
+  {
+    "event_id": "obs-raw-B-fishy",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-raw-B-fishy",
+    "occurred_at": "2026-09-20T11:20:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "raw_yolk_lot",
+        "aggregate_id": "raw-B"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_fishy",
+      "result": 2
+    }
+  },
+  {
+    "event_id": "obs-grade-A-fishy",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-grade-A-fishy",
+    "occurred_at": "2026-09-21T10:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "graded-A"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_fishy",
+      "result": 0,
+      "sample_consumed": {
+        "step_id": "grade-A",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-grade-C-fishy",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-grade-C-fishy",
+    "occurred_at": "2026-09-21T10:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "graded-C"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_fishy",
+      "result": 0,
+      "sample_consumed": {
+        "step_id": "grade-C",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-grade-B-fishy",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-grade-B-fishy",
+    "occurred_at": "2026-09-21T10:20:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "graded-B"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_fishy",
+      "result": 2,
+      "sample_consumed": {
+        "step_id": "grade-B",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-brine-A-salt",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-brine-A-salt",
+    "occurred_at": "2026-09-22T13:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "brined-A"
+      },
+      "method_version": "SALT-TITR-v2",
+      "metric": "salt_pct",
+      "result": 4.0,
+      "sample_consumed": {
+        "step_id": "brine-A",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-brine-C-salt",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-brine-C-salt",
+    "occurred_at": "2026-09-22T13:05:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "brined-C"
+      },
+      "method_version": "SALT-TITR-v2",
+      "metric": "salt_pct",
+      "result": 3.8,
+      "sample_consumed": {
+        "step_id": "brine-C",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-brine-B-salt",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-brine-B-salt",
+    "occurred_at": "2026-09-22T13:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "brined-B"
+      },
+      "method_version": "SALT-TITR-v2",
+      "metric": "salt_pct",
+      "result": 7.4,
+      "sample_consumed": {
+        "step_id": "brine-B",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-thaw-A-water",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-thaw-A-water",
+    "occurred_at": "2026-09-23T10:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "thawed-A"
+      },
+      "method_version": "MOISTURE-OVEN-v3",
+      "metric": "water_pct",
+      "result": 35.0,
+      "sample_consumed": {
+        "step_id": "thaw-A",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-thaw-C-water",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-thaw-C-water",
+    "occurred_at": "2026-09-23T10:05:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "thawed-C"
+      },
+      "method_version": "MOISTURE-OVEN-v3",
+      "metric": "water_pct",
+      "result": 36.0,
+      "sample_consumed": {
+        "step_id": "thaw-C",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-thaw-B-water",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-thaw-B-water",
+    "occurred_at": "2026-09-23T10:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "thawed-B"
+      },
+      "method_version": "MOISTURE-OVEN-v3",
+      "metric": "water_pct",
+      "result": 43.0,
+      "sample_consumed": {
+        "step_id": "thaw-B",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-thaw-B-water-recheck",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-thaw-B-water-recheck",
+    "occurred_at": "2026-09-23T12:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "thawed-B"
+      },
+      "method_version": "MOISTURE-OVEN-v3",
+      "metric": "water_pct",
+      "result": 42.0,
+      "sample_consumed": {
+        "step_id": "thaw-B",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "exempt-grade-B-fishy",
+    "event_type": "DEVIATION_EXEMPTION_GRANTED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "graded-B",
+    "occurred_at": "2026-09-21T15:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "graded-B",
+      "step_id": "grade-B",
+      "metric": "sensory_fishy",
+      "responsible": "孙丽",
+      "granted_by": "李敬",
+      "reason": "分级感官腥味偏高，限定用于高烤温产品并加密抽检"
+    }
+  },
+  {
+    "event_id": "exempt-brine-B-salt",
+    "event_type": "DEVIATION_EXEMPTION_GRANTED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "brined-B",
+    "occurred_at": "2026-09-22T16:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "brined-B",
+      "step_id": "brine-B",
+      "metric": "salt_pct",
+      "responsible": "周强",
+      "granted_by": "李敬",
+      "reason": "腌制盐度超限，评估认为经烘烤可平衡，特许放行"
+    }
+  },
+  {
+    "event_id": "exempt-thaw-B-water",
+    "event_type": "DEVIATION_EXEMPTION_GRANTED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "thawed-B",
+    "occurred_at": "2026-09-23T14:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "thawed-B",
+      "step_id": "thaw-B",
+      "metric": "water_pct",
+      "responsible": "吴海",
+      "granted_by": "李敬",
+      "reason": "解冻等待超时导致水分偏高，按偏差批继续"
+    }
+  },
+  {
+    "event_id": "step-bake-G",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "FG-0924-G",
+    "occurred_at": "2026-09-24T09:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "baking",
+      "step_id": "bake-G",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "thawed-A",
+          "quantity": 140.0
+        },
+        {
+          "source_batch": "thawed-C",
+          "quantity": 60.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "FG-0924-G",
+          "quantity": 195.0,
+          "role": "product"
+        },
+        {
+          "quantity": 2.0,
+          "role": "sample"
+        },
+        {
+          "quantity": 3.0,
+          "role": "loss"
+        }
+      ],
+      "equipment_program": "BAKE-CURVE-STD-18",
+      "params": {
+        "oven": "3号炉"
+      }
+    }
+  },
+  {
+    "event_id": "step-bake-B",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "FG-0924-B",
+    "occurred_at": "2026-09-24T10:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "baking",
+      "step_id": "bake-B",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "thawed-B",
+          "quantity": 180.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "FG-0924-B",
+          "quantity": 176.0,
+          "role": "product"
+        },
+        {
+          "quantity": 1.0,
+          "role": "sample"
+        },
+        {
+          "quantity": 3.0,
+          "role": "loss"
+        }
+      ],
+      "equipment_program": "BAKE-CURVE-STD-18",
+      "params": {
+        "oven": "3号炉"
+      }
+    }
+  },
+  {
+    "event_id": "exempt-bake-B-texture",
+    "event_type": "DEVIATION_EXEMPTION_GRANTED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "FG-0924-B",
+    "occurred_at": "2026-09-24T15:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "FG-0924-B",
+      "step_id": "bake-B",
+      "metric": "sensory_texture",
+      "responsible": "郑华",
+      "granted_by": "李敬",
+      "reason": "口感偏硬判定，质量负责人当日特许放行"
+    }
+  },
+  {
+    "event_id": "obs-bake-G-texture",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-bake-G-texture",
+    "occurred_at": "2026-09-24T14:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "FG-0924-G"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_texture",
+      "result": 1,
+      "sample_consumed": {
+        "step_id": "bake-G",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "obs-bake-B-texture",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-bake-B-texture",
+    "occurred_at": "2026-09-24T14:30:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "FG-0924-B"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_texture",
+      "result": 3,
+      "sample_consumed": {
+        "step_id": "bake-B",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "release-G",
+    "event_type": "BATCH_RELEASED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "FG-0924-G",
+    "occurred_at": "2026-09-24T18:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "FG-0924-G",
+      "threshold_versions": {
+        "salt_pct": 1,
+        "water_pct": 1,
+        "sensory_fishy": 1,
+        "sensory_texture": 1
+      },
+      "decided_by": "李敬",
+      "conclusion": "released"
+    }
+  },
+  {
+    "event_id": "release-B",
+    "event_type": "BATCH_RELEASED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "FG-0924-B",
+    "occurred_at": "2026-09-24T18:30:00+08:00",
+    "version": 3,
+    "payload": {
+      "batch_id": "FG-0924-B",
+      "threshold_versions": {
+        "salt_pct": 1,
+        "water_pct": 1,
+        "sensory_fishy": 1,
+        "sensory_texture": 1
+      },
+      "decided_by": "李敬",
+      "conclusion": "released_with_exemptions"
+    }
+  },
+  {
+    "event_id": "th-water-v2",
+    "event_type": "THRESHOLD_PUBLISHED",
+    "aggregate_type": "threshold",
+    "aggregate_id": "threshold-water_pct",
+    "occurred_at": "2026-09-25T12:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "metric": "water_pct",
+      "limits": {
+        "min": 20.0,
+        "max": 38.0
+      },
+      "effective_from": "2026-09-25T12:00:00+08:00",
+      "method_version": "MOISTURE-OVEN-v3"
+    }
+  },
+  {
+    "event_id": "ship-S1-B",
+    "event_type": "SHIPMENT_DISPATCHED",
+    "aggregate_type": "shipment",
+    "aggregate_id": "ship-0925-S1",
+    "occurred_at": "2026-09-25T15:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "store_id": "S1-南京东路店",
+      "allocations": [
+        {
+          "batch_id": "FG-0924-B",
+          "quantity": 80.0,
+          "unit": "kg"
+        }
+      ],
+      "sell_by": "2026-10-10T20:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "ship-S2-B",
+    "event_type": "SHIPMENT_DISPATCHED",
+    "aggregate_type": "shipment",
+    "aggregate_id": "ship-0925-S2",
+    "occurred_at": "2026-09-25T15:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "store_id": "S2-徐家汇店",
+      "allocations": [
+        {
+          "batch_id": "FG-0924-B",
+          "quantity": 60.0,
+          "unit": "kg"
+        }
+      ],
+      "sell_by": "2026-10-10T20:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "ship-S3-G",
+    "event_type": "SHIPMENT_DISPATCHED",
+    "aggregate_type": "shipment",
+    "aggregate_id": "ship-0925-S3",
+    "occurred_at": "2026-09-25T15:20:00+08:00",
+    "version": 1,
+    "payload": {
+      "store_id": "S3-陆家嘴店",
+      "allocations": [
+        {
+          "batch_id": "FG-0924-G",
+          "quantity": 120.0,
+          "unit": "kg"
+        }
+      ],
+      "sell_by": "2026-10-10T20:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "step-bake-N",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "FG-0926-N",
+    "occurred_at": "2026-09-26T07:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stage": "baking",
+      "step_id": "bake-N",
+      "unit": "kg",
+      "input_allocations": [
+        {
+          "source_batch": "thawed-A",
+          "quantity": 40.0
+        }
+      ],
+      "outputs": [
+        {
+          "batch_id": "FG-0926-N",
+          "quantity": 37.0,
+          "role": "product"
+        },
+        {
+          "quantity": 1.0,
+          "role": "sample"
+        },
+        {
+          "quantity": 2.0,
+          "role": "loss"
+        }
+      ],
+      "equipment_program": "BAKE-CURVE-STD-18",
+      "params": {
+        "oven": "1号炉"
+      }
+    }
+  },
+  {
+    "event_id": "obs-bake-N-texture",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "obs-bake-N-texture",
+    "occurred_at": "2026-09-26T08:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "target": {
+        "aggregate_type": "process_batch",
+        "aggregate_id": "FG-0926-N"
+      },
+      "method_version": "SENSORY-PANEL-v4",
+      "metric": "sensory_texture",
+      "result": 1,
+      "sample_consumed": {
+        "step_id": "bake-N",
+        "quantity": 1.0,
+        "unit": "kg"
+      }
+    }
+  },
+  {
+    "event_id": "release-N",
+    "event_type": "BATCH_RELEASED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "FG-0926-N",
+    "occurred_at": "2026-09-26T09:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "FG-0926-N",
+      "threshold_versions": {
+        "salt_pct": 1,
+        "water_pct": 2,
+        "sensory_fishy": 1,
+        "sensory_texture": 1
+      },
+      "decided_by": "李敬",
+      "conclusion": "released"
+    }
+  },
+  {
+    "event_id": "cmp-001",
+    "event_type": "COMPLAINT_FILED",
+    "aggregate_type": "complaint",
+    "aggregate_id": "CMP-20260926-001",
+    "occurred_at": "2026-09-26T09:30:00+08:00",
+    "version": 1,
+    "payload": {
+      "store_id": "S1-南京东路店",
+      "purchased_at": "2026-09-25T19:20:00+08:00",
+      "symptoms": [
+        "fishy",
+        "hard"
+      ],
+      "sample_received": "SMP-7781",
+      "sample_batch_id": "FG-0924-B"
+    }
+  },
+  {
+    "event_id": "hold-case-001",
+    "event_type": "STOCK_HELD",
+    "aggregate_type": "disposition_case",
+    "aggregate_id": "CASE-20260926-001",
+    "occurred_at": "2026-09-26T10:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "scope": {
+        "batches": [
+          "FG-0924-B"
+        ],
+        "stores": [
+          "S1-南京东路店",
+          "S2-徐家汇店"
+        ]
+      },
+      "reason": "CMP-20260926-001 腥味/硬实投诉，等待质量负责人确认处置范围",
+      "held_by": "李敬",
+      "case_id": "CASE-20260926-001"
+    }
+  },
+  {
+    "event_id": "disposition-case-001",
+    "event_type": "DISPOSITION_APPROVED",
+    "aggregate_type": "disposition_case",
+    "aggregate_id": "CASE-20260926-001",
+    "occurred_at": "2026-09-26T11:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "scope": {
+        "batches": [
+          "FG-0924-B"
+        ],
+        "stores": [
+          "S1-南京东路店",
+          "S2-徐家汇店"
+        ]
+      },
+      "decision": "recall",
+      "approved_by": "李敬",
+      "complaint_id": "CMP-20260926-001"
+    }
+  }
+]

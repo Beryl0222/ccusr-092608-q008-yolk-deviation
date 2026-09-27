@@ -20,8 +20,13 @@
       "type": "string",
       "enum": [
         "LOT_ACCEPTED",
+        "THRESHOLD_PUBLISHED",
         "BATCH_TRANSFORMED",
         "OBSERVATION_RECORDED",
+        "BATCH_RELEASED",
+        "DEVIATION_EXEMPTION_GRANTED",
+        "SHIPMENT_DISPATCHED",
+        "COMPLAINT_FILED",
         "STOCK_HELD",
         "DISPOSITION_APPROVED"
       ]
@@ -30,8 +35,11 @@
       "type": "string",
       "enum": [
         "raw_yolk_lot",
+        "threshold",
         "process_batch",
         "quality_observation",
+        "shipment",
+        "complaint",
         "disposition_case"
       ]
     },
@@ -52,17 +60,61 @@
     }
   },
   "payload_required_by_event": {
+    "LOT_ACCEPTED": [
+      "supplier",
+      "grade",
+      "quantity"
+    ],
+    "THRESHOLD_PUBLISHED": [
+      "metric",
+      "limits",
+      "effective_from"
+    ],
     "BATCH_TRANSFORMED": [
+      "stage",
+      "step_id",
+      "unit",
       "input_allocations",
-      "output_quantity"
+      "outputs"
     ],
     "OBSERVATION_RECORDED": [
+      "target",
       "method_version",
+      "metric",
       "result"
+    ],
+    "BATCH_RELEASED": [
+      "batch_id",
+      "threshold_versions",
+      "decided_by"
+    ],
+    "DEVIATION_EXEMPTION_GRANTED": [
+      "batch_id",
+      "step_id",
+      "metric",
+      "responsible",
+      "granted_by",
+      "reason"
+    ],
+    "SHIPMENT_DISPATCHED": [
+      "store_id",
+      "allocations",
+      "sell_by"
+    ],
+    "COMPLAINT_FILED": [
+      "store_id",
+      "purchased_at",
+      "symptoms"
     ],
     "STOCK_HELD": [
       "scope",
-      "reason"
+      "reason",
+      "held_by"
+    ],
+    "DISPOSITION_APPROVED": [
+      "scope",
+      "decision",
+      "approved_by"
     ]
   },
   "additionalProperties": false
