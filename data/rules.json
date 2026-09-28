@@ -1,0 +1,27 @@
+{
+  "ruleset_versions": [
+    {"rule_version": "ruleset-2026-08", "note": "中秋季放行快照（8 月阈值册）"},
+    {"rule_version": "ruleset-2026-09", "note": "9 月 20 日起新阈值，仅参与仍在处理的判断"}
+  ],
+  "rules": [
+    {"rule_version": "grade-v1", "metric": "grade_score", "stage": "incoming", "effective_from": "2026-08-01", "limits": {"min": 80}, "unit": "分"},
+    {"rule_version": "thaw-v1", "metric": "wait_minutes", "stage": "thawing", "effective_from": "2026-08-01", "limits": {"max": 120}, "unit": "分钟"},
+    {"rule_version": "salt-v1", "metric": "salt_pct", "stage": "curing", "effective_from": "2026-08-01", "limits": {"min": 1.2, "max": 8.0}, "unit": "%"},
+    {"rule_version": "salt-v2", "metric": "salt_pct", "stage": "curing", "effective_from": "2026-09-20", "limits": {"min": 1.2, "max": 7.5}, "unit": "%"},
+    {"rule_version": "bake-v1", "metric": "center_temp_c", "stage": "baking", "effective_from": "2026-08-01", "limits": {"min": 82, "max": 95}, "unit": "℃"},
+    {"rule_version": "store-v1", "metric": "store_temp_c", "stage": "store", "effective_from": "2026-08-01", "limits": {"min": 0, "max": 8}, "unit": "℃"}
+  ],
+  "evidence_plan": {
+    "causes": [
+      {"code": "RAW_GRADE", "label": "原料分级", "stage": "incoming", "metric": "grade_score", "scope": "input_lots"},
+      {"code": "THAW_WAIT", "label": "解冻等待", "stage": "thawing", "metric": "wait_minutes", "scope": "batch"},
+      {"code": "CURING_SALT", "label": "腌制批次盐分", "stage": "curing", "metric": "salt_pct", "scope": "batch"},
+      {"code": "BAKE_PROGRAM", "label": "烘烤程序", "stage": "baking", "metric": "center_temp_c", "scope": "batch"},
+      {"code": "STORE_STORAGE", "label": "门店存放", "stage": "store", "metric": "store_temp_c", "scope": "stock"}
+    ],
+    "samples_required": [
+      {"stage": "curing"},
+      {"stage": "baking"}
+    ]
+  }
+}

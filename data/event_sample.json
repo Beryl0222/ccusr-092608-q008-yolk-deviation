@@ -1,0 +1,15 @@
+{
+  "event_id": "092601-008-sample-001",
+  "event_type": "LOT_ACCEPTED",
+  "aggregate_type": "raw_yolk_lot",
+  "aggregate_id": "LOT-A",
+  "occurred_at": "2026-09-10T10:00:00+08:00",
+  "version": 1,
+  "payload": {
+    "supplier_id": "S-01",
+    "supplier_certificate_refs": ["CERT-A-0910-01"],
+    "grade": "A",
+    "quantity": 100.0,
+    "unit": "kg"
+  }
+}

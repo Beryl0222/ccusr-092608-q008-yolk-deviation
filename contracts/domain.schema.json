@@ -1,6 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "咸蛋黄风味偏差追因簿领域事件",
+  "description": "每个事件是不可变台账事实；数量必须跨拆批、混批、抽样、报废守恒，缺量不得向下游放行。",
   "type": "object",
   "required": [
     "event_id",
@@ -21,9 +22,15 @@
       "enum": [
         "LOT_ACCEPTED",
         "BATCH_TRANSFORMED",
+        "SAMPLE_DRAWN",
+        "MATERIAL_SCRAPPED",
         "OBSERVATION_RECORDED",
+        "RELEASE_DECIDED",
+        "DEVIATION_EXEMPTION_GRANTED",
         "STOCK_HELD",
-        "DISPOSITION_APPROVED"
+        "STOCK_MOVED",
+        "DISPOSITION_APPROVED",
+        "COMPLAINT_FILED"
       ]
     },
     "aggregate_type": {
@@ -32,6 +39,9 @@
         "raw_yolk_lot",
         "process_batch",
         "quality_observation",
+        "retained_sample",
+        "consumer_complaint",
+        "stock_unit",
         "disposition_case"
       ]
     },
@@ -51,18 +61,103 @@
       "type": "object"
     }
   },
+  "aggregate_types_by_event": {
+    "LOT_ACCEPTED": ["raw_yolk_lot"],
+    "BATCH_TRANSFORMED": ["process_batch"],
+    "SAMPLE_DRAWN": ["retained_sample"],
+    "MATERIAL_SCRAPPED": ["process_batch", "raw_yolk_lot"],
+    "OBSERVATION_RECORDED": ["quality_observation"],
+    "RELEASE_DECIDED": ["process_batch"],
+    "DEVIATION_EXEMPTION_GRANTED": ["process_batch"],
+    "STOCK_HELD": ["stock_unit", "process_batch", "disposition_case"],
+    "STOCK_MOVED": ["stock_unit"],
+    "DISPOSITION_APPROVED": ["disposition_case"],
+    "COMPLAINT_FILED": ["consumer_complaint"]
+  },
   "payload_required_by_event": {
+    "LOT_ACCEPTED": [
+      "supplier_id",
+      "supplier_certificate_refs",
+      "grade",
+      "quantity",
+      "unit"
+    ],
     "BATCH_TRANSFORMED": [
+      "step",
       "input_allocations",
-      "output_quantity"
+      "outputs"
+    ],
+    "SAMPLE_DRAWN": [
+      "source_batch_id",
+      "stage",
+      "sample_id",
+      "quantity_consumed",
+      "unit",
+      "retained",
+      "drawn_by"
+    ],
+    "MATERIAL_SCRAPPED": [
+      "source_batch_id",
+      "quantity",
+      "unit",
+      "reason_code"
     ],
     "OBSERVATION_RECORDED": [
+      "subject_type",
+      "subject_id",
+      "check_stage",
       "method_version",
-      "result"
+      "rule_version",
+      "observed_at",
+      "result",
+      "observed_by"
+    ],
+    "RELEASE_DECIDED": [
+      "batch_id",
+      "decision",
+      "rule_version",
+      "decided_by",
+      "decided_at"
+    ],
+    "DEVIATION_EXEMPTION_GRANTED": [
+      "batch_id",
+      "step",
+      "observation_id",
+      "decision",
+      "granted_by",
+      "step_owner",
+      "granted_at"
     ],
     "STOCK_HELD": [
       "scope",
-      "reason"
+      "reason",
+      "held_by",
+      "held_by_role",
+      "held_at"
+    ],
+    "STOCK_MOVED": [
+      "stock_unit_id",
+      "from_location",
+      "to_location",
+      "quantity",
+      "unit",
+      "moved_at"
+    ],
+    "DISPOSITION_APPROVED": [
+      "case_id",
+      "scope",
+      "decision",
+      "approved_by",
+      "approved_by_role",
+      "approved_at",
+      "based_on_rule_version"
+    ],
+    "COMPLAINT_FILED": [
+      "product",
+      "store_id",
+      "purchased_at",
+      "received_at",
+      "symptoms"
     ]
   },
   "additionalProperties": false

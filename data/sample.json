@@ -1,9 +1,572 @@
-{
-  "event_id": "092601-008-sample-001",
-  "event_type": "LOT_ACCEPTED",
-  "aggregate_type": "raw_yolk_lot",
-  "aggregate_id": "yolk_deviation-001",
-  "occurred_at": "2026-09-25T10:00:00+08:00",
-  "version": 1,
-  "payload": {}
-}
+[
+  {
+    "event_id": "evt-lot-a",
+    "event_type": "LOT_ACCEPTED",
+    "aggregate_type": "raw_yolk_lot",
+    "aggregate_id": "LOT-A",
+    "occurred_at": "2026-09-10T10:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "supplier_id": "S-01",
+      "supplier_certificate_refs": ["CERT-A-0910-01"],
+      "grade": "A",
+      "quantity": 100.0,
+      "unit": "kg"
+    }
+  },
+  {
+    "event_id": "evt-lot-b",
+    "event_type": "LOT_ACCEPTED",
+    "aggregate_type": "raw_yolk_lot",
+    "aggregate_id": "LOT-B",
+    "occurred_at": "2026-09-11T10:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "supplier_id": "S-02",
+      "supplier_certificate_refs": ["CERT-B-0911-01"],
+      "grade": "B",
+      "quantity": 60.0,
+      "unit": "kg"
+    }
+  },
+  {
+    "event_id": "obs-lot-a-grade",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-LOTA-GRADE",
+    "occurred_at": "2026-09-10T10:30:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "raw_yolk_lot",
+      "subject_id": "LOT-A",
+      "check_stage": "incoming",
+      "method_version": "grade-check-v3",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-10T10:20:00+08:00",
+      "result": {"metric": "grade_score", "value": 88, "unit": "分"},
+      "observed_by": "u-iqc-周"
+    }
+  },
+  {
+    "event_id": "obs-lot-b-grade",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-LOTB-GRADE",
+    "occurred_at": "2026-09-11T10:30:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "raw_yolk_lot",
+      "subject_id": "LOT-B",
+      "check_stage": "incoming",
+      "method_version": "grade-check-v3",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-11T10:20:00+08:00",
+      "result": {"metric": "grade_score", "value": 82, "unit": "分"},
+      "observed_by": "u-iqc-周"
+    }
+  },
+  {
+    "event_id": "evt-thaw-g",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-THAW-G",
+    "occurred_at": "2026-09-12T07:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "step": "thawing",
+      "equipment_program": "THAW-PROG-STD",
+      "input_allocations": [
+        {"source_batch_id": "LOT-A", "quantity": 40.0, "unit": "kg", "fraction": 1.0}
+      ],
+      "outputs": [
+        {"batch_id": "WIP-THAW-G", "quantity": 39.5, "unit": "kg"}
+      ],
+      "loss_quantity": 0.5
+    }
+  },
+  {
+    "event_id": "evt-thaw-b",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-THAW-B",
+    "occurred_at": "2026-09-12T07:20:00+08:00",
+    "version": 1,
+    "payload": {
+      "step": "thawing",
+      "equipment_program": "THAW-PROG-STD",
+      "input_allocations": [
+        {"source_batch_id": "LOT-B", "quantity": 30.0, "unit": "kg", "fraction": 1.0}
+      ],
+      "outputs": [
+        {"batch_id": "WIP-THAW-B", "quantity": 29.5, "unit": "kg"}
+      ],
+      "loss_quantity": 0.5
+    }
+  },
+  {
+    "event_id": "obs-thaw-g-wait",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-TG-WAIT",
+    "occurred_at": "2026-09-12T08:05:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "process_batch",
+      "subject_id": "WIP-THAW-G",
+      "check_stage": "thawing",
+      "method_version": "thaw-timer-v1",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-12T08:00:00+08:00",
+      "result": {"metric": "wait_minutes", "value": 95, "unit": "分钟"},
+      "observed_by": "u-thaw-leader-赵"
+    }
+  },
+  {
+    "event_id": "obs-thaw-b-wait",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-TB-WAIT",
+    "occurred_at": "2026-09-12T08:25:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "process_batch",
+      "subject_id": "WIP-THAW-B",
+      "check_stage": "thawing",
+      "method_version": "thaw-timer-v1",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-12T08:20:00+08:00",
+      "result": {"metric": "wait_minutes", "value": 150, "unit": "分钟"},
+      "observed_by": "u-thaw-leader-赵"
+    }
+  },
+  {
+    "event_id": "evt-exempt-tb-wait",
+    "event_type": "DEVIATION_EXEMPTION_GRANTED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-THAW-B",
+    "occurred_at": "2026-09-12T08:40:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "WIP-THAW-B",
+      "step": "thawing",
+      "observation_id": "OBS-TB-WAIT",
+      "decision": "APPROVED",
+      "granted_by": "u-quality-lead-林",
+      "step_owner": "u-thaw-leader-赵",
+      "granted_at": "2026-09-12T08:40:00+08:00",
+      "note": "超时 30 分钟但中心温度仍 ≤4℃，限定本批继续腌制并加密抽检"
+    }
+  },
+  {
+    "event_id": "evt-cure-g",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-CURE-G",
+    "occurred_at": "2026-09-12T09:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "step": "curing",
+      "equipment_program": "CURE-TANK-02",
+      "input_allocations": [
+        {"source_batch_id": "WIP-THAW-G", "quantity": 39.5, "unit": "kg", "fraction": 1.0}
+      ],
+      "outputs": [
+        {"batch_id": "WIP-CURE-G", "quantity": 37.5, "unit": "kg"}
+      ],
+      "loss_quantity": 2.0
+    }
+  },
+  {
+    "event_id": "evt-cure-b",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-CURE-B",
+    "occurred_at": "2026-09-12T09:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "step": "curing",
+      "equipment_program": "CURE-TANK-05",
+      "input_allocations": [
+        {"source_batch_id": "WIP-THAW-B", "quantity": 29.5, "unit": "kg", "fraction": 1.0}
+      ],
+      "outputs": [
+        {"batch_id": "WIP-CURE-B", "quantity": 27.5, "unit": "kg"}
+      ],
+      "loss_quantity": 2.0
+    }
+  },
+  {
+    "event_id": "obs-cure-g-salt",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-CG-SALT",
+    "occurred_at": "2026-09-12T14:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "process_batch",
+      "subject_id": "WIP-CURE-G",
+      "check_stage": "curing",
+      "method_version": "salt-titration-v2",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-12T13:50:00+08:00",
+      "result": {"metric": "salt_pct", "value": 4.2, "unit": "%"},
+      "observed_by": "u-qc-吴"
+    }
+  },
+  {
+    "event_id": "obs-cure-b-salt",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-CB-SALT",
+    "occurred_at": "2026-09-12T14:05:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "process_batch",
+      "subject_id": "WIP-CURE-B",
+      "check_stage": "curing",
+      "method_version": "salt-titration-v2",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-12T13:55:00+08:00",
+      "result": {"metric": "salt_pct", "value": 7.7, "unit": "%"},
+      "observed_by": "u-qc-吴"
+    }
+  },
+  {
+    "event_id": "evt-sample-cure-g",
+    "event_type": "SAMPLE_DRAWN",
+    "aggregate_type": "retained_sample",
+    "aggregate_id": "SMP-CG-01",
+    "occurred_at": "2026-09-12T14:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "source_batch_id": "WIP-CURE-G",
+      "stage": "curing",
+      "sample_id": "SMP-CG-01",
+      "quantity_consumed": 0.2,
+      "unit": "kg",
+      "retained": true,
+      "drawn_by": "u-qc-吴"
+    }
+  },
+  {
+    "event_id": "evt-sample-cure-b",
+    "event_type": "SAMPLE_DRAWN",
+    "aggregate_type": "retained_sample",
+    "aggregate_id": "SMP-CB-01",
+    "occurred_at": "2026-09-12T14:15:00+08:00",
+    "version": 1,
+    "payload": {
+      "source_batch_id": "WIP-CURE-B",
+      "stage": "curing",
+      "sample_id": "SMP-CB-01",
+      "quantity_consumed": 0.2,
+      "unit": "kg",
+      "retained": true,
+      "drawn_by": "u-qc-吴"
+    }
+  },
+  {
+    "event_id": "evt-bake-g-split",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-BAKE-G1",
+    "occurred_at": "2026-09-13T06:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "step": "baking",
+      "equipment_program": "OVEN-PROG-A",
+      "input_allocations": [
+        {"source_batch_id": "WIP-CURE-G", "quantity": 30.0, "unit": "kg", "fraction": 1.0}
+      ],
+      "outputs": [
+        {"batch_id": "WIP-BAKE-G1", "quantity": 20.0, "unit": "kg"},
+        {"batch_id": "WIP-BAKE-G2", "quantity": 8.5, "unit": "kg"}
+      ],
+      "loss_quantity": 1.5
+    }
+  },
+  {
+    "event_id": "evt-bake-b-merge",
+    "event_type": "BATCH_TRANSFORMED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-BAKE-B1",
+    "occurred_at": "2026-09-13T06:30:00+08:00",
+    "version": 1,
+    "payload": {
+      "step": "baking",
+      "equipment_program": "OVEN-PROG-A",
+      "input_allocations": [
+        {"source_batch_id": "WIP-CURE-B", "quantity": 20.0, "unit": "kg", "fraction": 0.8},
+        {"source_batch_id": "WIP-CURE-G", "quantity": 5.0, "unit": "kg", "fraction": 0.2}
+      ],
+      "outputs": [
+        {"batch_id": "WIP-BAKE-B1", "quantity": 23.5, "unit": "kg"}
+      ],
+      "loss_quantity": 1.5
+    }
+  },
+  {
+    "event_id": "obs-bake-g1-temp",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-BG1-TEMP",
+    "occurred_at": "2026-09-13T07:30:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "process_batch",
+      "subject_id": "WIP-BAKE-G1",
+      "check_stage": "baking",
+      "method_version": "probe-temp-v4",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-13T07:25:00+08:00",
+      "result": {"metric": "center_temp_c", "value": 88, "unit": "℃"},
+      "observed_by": "u-bake-leader-钱"
+    }
+  },
+  {
+    "event_id": "obs-bake-g2-temp",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-BG2-TEMP",
+    "occurred_at": "2026-09-13T07:35:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "process_batch",
+      "subject_id": "WIP-BAKE-G2",
+      "check_stage": "baking",
+      "method_version": "probe-temp-v4",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-13T07:30:00+08:00",
+      "result": {"metric": "center_temp_c", "value": 87, "unit": "℃"},
+      "observed_by": "u-bake-leader-钱"
+    }
+  },
+  {
+    "event_id": "obs-bake-b1-temp",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-BB1-TEMP",
+    "occurred_at": "2026-09-13T07:55:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "process_batch",
+      "subject_id": "WIP-BAKE-B1",
+      "check_stage": "baking",
+      "method_version": "probe-temp-v4",
+      "rule_version": "ruleset-2026-08",
+      "observed_at": "2026-09-13T07:50:00+08:00",
+      "result": {"metric": "center_temp_c", "value": 85, "unit": "℃"},
+      "observed_by": "u-bake-leader-钱"
+    }
+  },
+  {
+    "event_id": "evt-sample-bake-g1",
+    "event_type": "SAMPLE_DRAWN",
+    "aggregate_type": "retained_sample",
+    "aggregate_id": "SMP-BG1-01",
+    "occurred_at": "2026-09-13T08:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "source_batch_id": "WIP-BAKE-G1",
+      "stage": "baking",
+      "sample_id": "SMP-BG1-01",
+      "quantity_consumed": 0.2,
+      "unit": "kg",
+      "retained": true,
+      "drawn_by": "u-qc-吴"
+    }
+  },
+  {
+    "event_id": "evt-scrap-cure-g",
+    "event_type": "MATERIAL_SCRAPPED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-CURE-G",
+    "occurred_at": "2026-09-13T09:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "source_batch_id": "WIP-CURE-G",
+      "quantity": 2.3,
+      "unit": "kg",
+      "reason_code": "OFFTAKE_REMAINDER",
+      "reason": "拆并后尾料报废"
+    }
+  },
+  {
+    "event_id": "evt-scrap-cure-b",
+    "event_type": "MATERIAL_SCRAPPED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-CURE-B",
+    "occurred_at": "2026-09-13T09:05:00+08:00",
+    "version": 2,
+    "payload": {
+      "source_batch_id": "WIP-CURE-B",
+      "quantity": 7.3,
+      "unit": "kg",
+      "reason_code": "OFFTAKE_REMAINDER",
+      "reason": "腌制尾料报废"
+    }
+  },
+  {
+    "event_id": "evt-release-g1",
+    "event_type": "RELEASE_DECIDED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-BAKE-G1",
+    "occurred_at": "2026-09-13T11:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "WIP-BAKE-G1",
+      "decision": "RELEASED",
+      "rule_version": "ruleset-2026-08",
+      "decided_by": "u-quality-lead-林",
+      "decided_at": "2026-09-13T11:00:00+08:00",
+      "produced_stock": [
+        {"stock_unit_id": "SU-G1", "product": "蛋黄月饼-经典", "quantity": 19.8, "unit": "kg", "location": "DC-1"}
+      ]
+    }
+  },
+  {
+    "event_id": "evt-release-g2",
+    "event_type": "RELEASE_DECIDED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-BAKE-G2",
+    "occurred_at": "2026-09-13T11:05:00+08:00",
+    "version": 1,
+    "payload": {
+      "batch_id": "WIP-BAKE-G2",
+      "decision": "RELEASED",
+      "rule_version": "ruleset-2026-08",
+      "decided_by": "u-quality-lead-林",
+      "decided_at": "2026-09-13T11:05:00+08:00",
+      "produced_stock": [
+        {"stock_unit_id": "SU-G2", "product": "蛋黄月饼-经典", "quantity": 8.5, "unit": "kg", "location": "ST-08"}
+      ]
+    }
+  },
+  {
+    "event_id": "evt-release-b1",
+    "event_type": "RELEASE_DECIDED",
+    "aggregate_type": "process_batch",
+    "aggregate_id": "WIP-BAKE-B1",
+    "occurred_at": "2026-09-13T11:10:00+08:00",
+    "version": 2,
+    "payload": {
+      "batch_id": "WIP-BAKE-B1",
+      "decision": "CONDITIONAL",
+      "rule_version": "ruleset-2026-08",
+      "decided_by": "u-quality-lead-林",
+      "decided_at": "2026-09-13T11:10:00+08:00",
+      "produced_stock": [
+        {"stock_unit_id": "SU-B1", "product": "蛋黄月饼-经典", "quantity": 23.5, "unit": "kg", "location": "ST-07"}
+      ],
+      "note": "解冻超时已由质量负责人豁免，附条件放行：门店缩短售卖期"
+    }
+  },
+  {
+    "event_id": "evt-move-g1",
+    "event_type": "STOCK_MOVED",
+    "aggregate_type": "stock_unit",
+    "aggregate_id": "SU-G1",
+    "occurred_at": "2026-09-14T09:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "stock_unit_id": "SU-G1",
+      "from_location": "DC-1",
+      "to_location": "ST-07",
+      "quantity": 19.8,
+      "unit": "kg",
+      "moved_at": "2026-09-14T09:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "obs-store-b1-temp",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-SUB1-TEMP",
+    "occurred_at": "2026-09-20T10:05:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "stock_unit",
+      "subject_id": "SU-B1",
+      "check_stage": "store",
+      "method_version": "store-logger-v1",
+      "rule_version": "ruleset-2026-09",
+      "observed_at": "2026-09-20T10:00:00+08:00",
+      "result": {"metric": "store_temp_c", "value": 10.5, "unit": "℃"},
+      "observed_by": "u-store-07-郑"
+    }
+  },
+  {
+    "event_id": "obs-store-g1-temp",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "quality_observation",
+    "aggregate_id": "OBS-SUG1-TEMP",
+    "occurred_at": "2026-09-20T10:10:00+08:00",
+    "version": 1,
+    "payload": {
+      "subject_type": "stock_unit",
+      "subject_id": "SU-G1",
+      "check_stage": "store",
+      "method_version": "store-logger-v1",
+      "rule_version": "ruleset-2026-09",
+      "observed_at": "2026-09-20T10:05:00+08:00",
+      "result": {"metric": "store_temp_c", "value": 6.0, "unit": "℃"},
+      "observed_by": "u-store-07-郑"
+    }
+  },
+  {
+    "event_id": "evt-complaint-01",
+    "event_type": "COMPLAINT_FILED",
+    "aggregate_type": "consumer_complaint",
+    "aggregate_id": "CMP-20260921-01",
+    "occurred_at": "2026-09-21T14:00:00+08:00",
+    "version": 1,
+    "payload": {
+      "product": "蛋黄月饼-经典",
+      "store_id": "ST-07",
+      "purchased_at": "2026-09-20T18:30:00+08:00",
+      "received_at": "2026-09-21T14:00:00+08:00",
+      "symptoms": ["腥气明显", "蛋黄发硬", "不流油"],
+      "contact_ref": "客服工单 WX-7731"
+    }
+  },
+  {
+    "event_id": "evt-hold-case-01",
+    "event_type": "STOCK_HELD",
+    "aggregate_type": "disposition_case",
+    "aggregate_id": "CASE-01",
+    "occurred_at": "2026-09-21T15:30:00+08:00",
+    "version": 1,
+    "payload": {
+      "scope": {
+        "complaint_ids": ["CMP-20260921-01"],
+        "batch_ids": ["WIP-BAKE-B1"],
+        "stock_unit_ids": ["SU-B1"]
+      },
+      "reason": "投诉追因锁定 WIP-BAKE-B1 路径，门店存放温度越限且解冻超时豁免在案，先冻结同批库存",
+      "held_by": "u-quality-lead-林",
+      "held_by_role": "quality_lead",
+      "held_at": "2026-09-21T15:30:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-disposition-case-01",
+    "event_type": "DISPOSITION_APPROVED",
+    "aggregate_type": "disposition_case",
+    "aggregate_id": "CASE-01",
+    "occurred_at": "2026-09-22T10:00:00+08:00",
+    "version": 2,
+    "payload": {
+      "case_id": "CASE-01",
+      "scope": {
+        "complaint_ids": ["CMP-20260921-01"],
+        "batch_ids": ["WIP-BAKE-B1"],
+        "stock_unit_ids": ["SU-B1"]
+      },
+      "decision": "RECALL",
+      "approved_by": "u-quality-lead-林",
+      "approved_by_role": "quality_lead",
+      "approved_at": "2026-09-22T10:00:00+08:00",
+      "based_on_rule_version": "ruleset-2026-09"
+    }
+  }
+]
